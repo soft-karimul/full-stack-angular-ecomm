@@ -1,0 +1,133 @@
+<form [formGroup]="categoryForm" (ngSubmit)="createNewCategory($event)">
+  <div
+    class="offcanvas offcanvas-end mx-100"
+    tabindex="-1"
+    id="offcanvasExample"
+    aria-labelledby="offcanvasExampleLabel"
+  >
+    <div class="offcanvas-header bg-three">
+      <h5 class="offcanvas-title fs-6 fw-normal" id="offcanvasExampleLabel">Add category</h5>
+      <br />
+      <button (click)="resetForm()"
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"
+      ></button>
+    </div>
+
+    <!-- body contents -->
+    <div class="p-4 offcanvas-body">
+      <div class="row my-5">
+        <div class="col-md-4 d-flex justify-contents-center align-items-center">
+          <span class="">Name</span>
+        </div>
+        <div class="col-md-8">
+          <div class="input-group">
+            <input
+              type="text"
+              name=""
+              formControlName="category"
+              class="form-control bg-three border rounded-1 p-2 shadow-none"
+              placeholder="category name"
+              id=""
+            />
+          </div>
+          <div
+            *ngIf="
+              category_val?.invalid &&
+              (category_val?.dirty || category_val?.touched)
+            "
+            class="alert text-danger py-1 ms-0 ps-0">
+            <div *ngIf="category_val?.errors?.['required']">
+              <span class="warn"> Category is required <i class="uil uil-exclamation-triangle"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row my-5">
+        <div class="col-md-4 d-flex justify-contents-center align-items-center">
+          <span class="fw-normal">Description</span>
+        </div>
+        <div class="col-md-8">
+          <div class="input-group">
+            <textarea
+              type="text"
+              name=""
+              rows="5"
+              class="form-control bg-three border rounded-1 p-2 shadow-none"
+              formControlName="description"
+              placeholder="category description"
+              id=""
+            ></textarea>
+          </div>
+          <div
+      *ngIf="description_val?.invalid && (description_val?.dirty || description_val?.touched)"  class="alert text-danger py-1 ms-0 ps-0">
+            <div *ngIf="description_val?.errors?.['required']">
+              <span class="warn"> Description is required <i class="uil uil-exclamation-triangle"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+     
+
+     
+     <!-- upload file  -->
+      <div class="row my-5">
+        <div class="col-md-4 d-flex justify-contents-center align-items-center">
+          <!-- <span class="fw-normal">Parent category</span> -->
+        </div>
+        <div class="col-md-8">
+          <div class="input-group">
+            <div
+              class="file position-relative d-flex justify-content-center align-items-center flex-column">
+              <i class="uil uil-cloud-upload fs-2"></i>
+              <h5 class="fs-6 p-0 m-0">Upload image</h5>
+              <span style="font-size: 12px">(Only *.jpeg, *.webp and *.png images will be accepted)</span>
+              <input
+                (change)="getFile($event)"
+                type="file"
+                name="File"
+                class="position-absolute form-control bg-three rounded-1 p-3 shadow-none"
+                placeholder="category name"
+                id=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!-- featured checkbox -->
+      <div class="row my-5">
+        <div class="col-md-4 d-flex justify-contents-center align-items-center">
+           <span class="fw-normal">Featured</span> 
+        </div>
+        <div class="col-md-8">
+          <div class="form-check form-switch">
+            <input class="form-check-input shadow-none border"  (change)="getCheckbox($event)" type="checkbox"  id="flexSwitchCheckChecked">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer contents -->
+    <div class="canvas-footer position-sticky h-auto p-4 bg-three">
+      <div class="row g-0">
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-6 d-flex justify-content-end">
+          <button [disabled]="btn_state"
+            type="submit"
+            class="add w-75 btn border bg-four py-2 px-4"
+          >
+            Add category<span *ngIf="btn_state">...</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <ng-toast></ng-toast>
+  </div>
+</form>

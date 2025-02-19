@@ -1,0 +1,159 @@
+<div
+  class="container d-flex align-items-center justify-content-center"
+  style="height: 1000px"
+>
+  <div class="row shadow-lg rounded py-5 d-flex justify-content-center align-items-center">
+    <div class="col-md-6">
+      <img
+        src="../../../../assets/images/shopping-5200288_1280.webp"
+        class="w-100"
+        alt=""
+      />
+    </div>
+    <div class="col-md-6 rounded p-4">
+
+      <form [formGroup]="signupForm" (ngSubmit)="submitForm()" class="">
+      <h2 class="fs-4">Sign up now</h2>
+
+      <!-- full name -->
+      <div class="mb-2 row d-flex flex-column">
+        <label for="fullname" class="col-sm-12 col-form-label">Full name</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control form-control-lg rounded-1"
+            id="fullname" formControlName="full_name"
+            value=""
+          />
+          <div *ngIf="full_name?.invalid && (full_name?.dirty || full_name?.touched)"
+          class="alert text-danger py-1 ms-0 ps-0">
+        <div *ngIf="full_name?.errors?.['required']">
+          Name is required.
+        </div>
+        <div *ngIf="full_name?.errors?.['minlength']">
+          Name must be at least 4 characters long.
+        </div>
+      </div>
+        </div>
+      </div>
+
+
+<!-- email field -->
+      <div class="mb-2 row d-flex flex-column">
+        <label for="Email" class="col-sm-12 col-form-label">Email</label>
+        <div class="col-sm-10">
+          <input
+            type="email"
+            class="form-control form-control-lg rounded-1"
+            id="email" formControlName="email"
+            value=""
+          />
+          <div *ngIf="email?.invalid && (email?.dirty || email?.touched)"
+          class="alert text-danger py-1 ms-0 ps-0">
+        <div *ngIf="email?.errors?.['required']">
+          Email is required.
+        </div>
+        <div *ngIf="email?.errors?.['email']">
+         Enter a valid email
+        </div>
+      </div>
+        </div>
+      </div>
+
+      <div class="mb-2 row d-flex flex-column">
+        <label for="fullname" class="col-sm-12 col-form-label">Password</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control form-control-lg rounded-1"
+            id="fullname" formControlName="password"
+            value=""
+          />
+          <div *ngIf="password?.invalid && (password?.dirty || password?.touched)"
+          class="alert text-danger py-1 ms-0 ps-0">
+        <div *ngIf="password?.errors?.['required']">
+          Password is required.
+        </div>
+       
+      </div>
+        </div>
+      </div>
+
+      <div class="mb-2 row d-flex flex-column">
+        <label for="fullname" class="col-sm-12 col-form-label"
+          >Select role</label
+        >
+        <div class="col-sm-10">
+          <select
+            class="form-select form-select-lg"
+            aria-label="Default select example" formControlName="role"
+          >
+            <option class=""  selected>Choose role</option>
+            <option class="" value="1">Admin</option>
+            <option value="2" class="">Employ</option>
+            <option value="3" class="">Customer</option>
+          </select>
+          <div *ngIf="role?.invalid && (role?.dirty || role?.touched)"
+          class="alert text-danger py-1 ms-0 ps-0">
+        <div *ngIf="role?.errors?.['required']">
+          Role is required.
+        </div>
+        
+      </div>
+        </div>
+      </div>
+
+      <div class="my-4 row">
+        <div class="col-sm-10 d-flex gap-4">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckDefault"
+          />
+          <label class="form-check-label" for="flexCheckDefault">
+            Terms and privacy
+          </label>
+        </div>
+      </div>
+
+
+    
+      <div class="mb-2 row d-flex flex-column">
+      <div class="col-sm-10" style="margin: 20px 0px 50px 0px">
+        <button type="submit" class="btn   fs-5 submit btn-lg w-100">
+          Create account
+        </button>
+      </div>
+      </div>
+
+    </form>
+
+     
+
+      <div class="row">
+        <div class="col-sm-10 d-flex justify-content-around gap-4" style="margin: 20px 0px 50px 0px">
+          <button
+          type="submit"
+          class="btn rounded-2 border fs-6   social-facebook btn-lg w-100"
+        >
+          Facebook <i class="uit uit-facebook-f"></i>
+        </button>
+        <button
+        type="submit"
+        class="btn fs-6 rounded-1 border social-google btn-lg  w-100"
+      >
+        Google <i class="uit uit-google"></i>
+      </button>
+        </div>
+        </div>
+
+      
+
+      <div class="my-2">
+        <a routerLink="/login" class="" style="font-size: 14px;">Already have an account  Login ? </a>
+      </div>
+    </div>
+  </div>
+  <ng-toast></ng-toast>
+</div>

@@ -1,0 +1,98 @@
+<form [formGroup]="subCategoryForm" (ngSubmit)="createNewSubCategory($event)">
+    <div
+      class="offcanvas offcanvas-end mx-100"
+      tabindex="-1"
+      id="subCategory"
+      aria-labelledby="offcanvasExampleLabel"
+    >
+      <div class="offcanvas-header bg-three">
+        <h5 class="offcanvas-title fs-6 fw-normal" id="offcanvasExampleLabel">Add sub category</h5>
+        <br />
+        <button
+          type="button" (click)="resetForm()"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+  
+      <div class="p-4 offcanvas-body">
+        <div class="row my-5">
+          <div class="col-md-4 d-flex justify-contents-center align-items-center">
+            <span class="">Parent category</span>
+          </div>
+          <div class="col-md-8">
+            <div class="input-group">
+         
+              <select class="form-select form-select-sm mb-3" formControlName="maincategory" aria-label=".form-select-lg example">
+                <option selected>Select main category</option>
+             
+                <option [value]="category.category" *ngFor="let category of categories;let i=index">
+                 {{ category.category }}
+                </option>
+          
+              </select>
+            </div>
+            <div
+              *ngIf="
+                category_val?.invalid &&
+                (category_val?.dirty || category_val?.touched)
+              "
+              class="alert text-danger py-1 ms-0 ps-0"
+            >
+              <div *ngIf="category_val?.errors?.['required']">
+                <span> Category is required.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="row my-5">
+          <div class="col-md-4 d-flex justify-contents-center align-items-center">
+            <span class="fw-normal">Subcategory</span>
+          </div>
+          <div class="col-md-8">
+            <div class="input-group">
+              <textarea
+                type="text"
+                name=""
+                rows="5"
+                class="form-control bg-three border rounded-1 p-2 shadow-none"
+                formControlName="subcategory"
+                placeholder="sub category"
+                id=""
+              ></textarea>
+            </div>
+            <div
+              *ngIf="
+                sub_category_val?.invalid &&
+                (sub_category_val?.dirty || sub_category_val?.touched)
+              "
+              class="alert text-danger py-1 ms-0 ps-0"
+            >
+              <div *ngIf="sub_category_val?.errors?.['required']">
+                <span> Description is required.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="canvas-footer position-sticky h-auto p-4 bg-three">
+        <div class="row g-0">
+          <div class="col-md-6">
+          </div>
+          <div class="col-md-6 d-flex justify-content-end">
+            <button [disabled]="btn_state"
+              type="submit"
+              class="add w-75 btn border bg-four py-2 px-4">
+              Add sub category<span *ngIf="btn_state">...</span>
+            </button>
+          </div>
+        </div>
+      </div>
+  
+      <ng-toast></ng-toast>
+    </div>
+  </form>
+  

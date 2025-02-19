@@ -1,0 +1,55 @@
+services:
+  # NestJS Application
+  app:
+    container_name: nestjs_app
+    build:
+      context: .  # Build the Dockerfile in the current directory
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"  # Map port 3000 on the host to port 3000 in the container
+    environment:
+      - DATABASE_HOST=db  # Use the database service name as the host
+      - DATABASE_PORT=5432
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=secret
+      - DATABASE_NAME=nestdb
+    depends_on:
+      - db  # Ensure the database starts before the app
+    networks:
+      - nest-network
+
+    # Enable Compose Watch for development
+    develop:
+      watch:
+        - action: sync  # Sync files into the container
+          path: ./src  # Watch the entire project directory
+          target: /app/src  # Sync changes to this directory in the container
+          ignore:
+            - node_modules/  # Ignore the node_modules directory
+            - .git/  # Ignore the .git directory
+        - action: rebuild  # Rebuild the container when package.json changes
+          path: package.json
+
+  # PostgreSQL Database
+  db:
+    container_name: postgres_db
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: nestdb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Persistent volume for PostgreSQL data
+    ports:
+      - "5432:5432"  # Map port 5432 on the host to port 5432 in the container
+    networks:
+      - nest-network
+
+# Docker Volumes
+volumes:
+  postgres_data:  # Persistent volume for PostgreSQL data
+
+# Docker Networks
+networks:
+  nest-network:
+    driver: bridge

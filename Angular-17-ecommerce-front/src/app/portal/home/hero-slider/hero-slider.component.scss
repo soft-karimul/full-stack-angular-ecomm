@@ -1,0 +1,30 @@
+.container-fluid {
+    width: 100%;
+    height:400px;
+    display: grid;
+    grid-template-columns:1fr;
+    overflow: hidden;
+    img {
+        object-fit:cover;
+        width: 100%;
+        height:400px;
+    }
+}
+.arrow-cont {
+    top:50%;
+    transform: translate(0,-50%);
+    padding:2vw;
+}
+.arrow-cont i {
+    cursor: pointer;
+}
+
+@media (max-width:800px){
+    .container-fluid {
+        height: 250px;
+        img {
+            height: 250px;
+        }
+    }
+
+}

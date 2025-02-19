@@ -1,0 +1,48 @@
+<div class="p-0 m-0" style="width: 100%;">
+<ul class="list-group ">
+
+    <!-- <li  class="list-group-item custom-color-one fw-bold border-0 bg-transparent fs-4 "><i class="uil uil-shopping-bag "></i> Dashtar</li> -->
+
+     <li  (click)="toggleMenu(i)" *ngFor="let menu of menus;let i=index;" class="list-group-item bg-transparent d-flex" [ngClass]="i==0 ? ' main-menurder custom-color-one fw-bold  justify-content-center align-items-center border-0  fs-4' : '  mb-1   justify-content-center align-items-center  border-0  fw-medium custom-color-three' ">
+      <div>
+         <a *ngIf="menu.link" [routerLink]="menu.link"> 
+
+          <i [class]="menu.icon" (click)="toggleMenu(i)"> </i> {{ navController ? '' :  menu.label  }}<i [class]="menu.icon_sub"></i>
+         </a> 
+         <ng-container *ngIf="!menu.link">
+          <i [class]="menu.icon" (click)="toggleMenu(i)"> </i> {{ navController ? '' :  menu.label  }}<i [class]="menu.icon_sub"></i>
+         </ng-container>
+      
+            <!-- <ng-container *ngIf="menu.sub != 0"> -->
+<ul class="list-group submenus p-0 m-0" *ngIf="menu.isopen">
+  <li *ngFor="let submenu of menu.sub;let i=index;" class='list-group-item sub-item d-flex justify-content-start align-items-center  border-0 bg-transparent  fw-medium custom-color-three'><a [routerLink]="submenu.link"><i [class]="submenu.icon"></i> {{ navController ? '' :  submenu.label  }} </a></li>
+</ul>
+    <!-- </ng-container> -->
+      </div>
+     
+      
+      
+
+    
+    </li>
+
+     <!--
+    <li class="list-group-item border-0 bg-transparent my-1 fw-medium custom-color-three"><i class="fs-5 uil uil-cell mx-2"></i> Catalog <i class="uil uil-angle-right mx-2 fs-5 "></i></li>
+    <li class="list-group-item border-0 bg-transparent my-1 fw-medium custom-color-three"><i class="fs-5 uil uil-users-alt mx-2"></i> Customers</li>
+
+    <li class="list-group-item border-0 bg-transparent my-1 fw-medium custom-color-three"><i class="fs-5 uil uil-map-pin mx-2"></i> Orders</li>
+
+    <li class="list-group-item border-0 bg-transparent my-1 fw-medium custom-color-three"><i class="fs-5 uil uil-user-md mx-2"></i> Our staff</li>
+
+    <li class="list-group-item border-0 bg-transparent my-1 fw-medium custom-color-three"><i class="fs-5 uil uil-setting mx-2"></i> Settings</li>
+
+    <li class="list-group-item border-0 bg-transparent my-1 fw-medium custom-color-three"><i class="fs-5 uil uil-globe mx-2"></i> International <i class="uil uil-angle-right mx-2 fs-5 "></i></li>
+
+    <li class="list-group-item border-0 bg-transparent my-1 fw-medium custom-color-three"><i class="fs-5 uil uil-store mx-2"></i> Online store <i class="uil uil-angle-right mx-2 fs-5 "></i></li>
+
+    <li class="list-group-item border-0 bg-transparent my-1 fw-medium custom-color-three"><i class="fs-5 uil uil-layers mx-2"></i> Pages <i class="uil uil-angle-right mx-2 fs-5 "></i></li> -->
+
+  </ul>
+
+  <button (click)="logOut()" class="btn custom-color-two logout border-0 mx-auto w-100 py-2 me-auto">{{ navController ? '' :  "logout"  }}<i class="uil uil-signout mx-2 fs-4"></i></button>
+  </div>

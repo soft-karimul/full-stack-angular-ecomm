@@ -1,0 +1,22 @@
+.offcanvas {
+    width:40%;
+}
+span{
+    font-size: 13px;
+}
+input,textarea {
+    font-size: 13px;
+}
+.add {
+    font-size: 14px;
+}
+
+@media(max-width:800px){
+    .offcanvas {
+        width:80%;
+    }
+}
+.form-select {
+    box-shadow: none;
+    font-size: 12px;
+}

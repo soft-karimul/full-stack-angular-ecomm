@@ -1,0 +1,20 @@
+<div class="container-fluid p-0 m-0 position-relative">
+
+   
+
+<div class="w-100">
+    
+    @for(slide of sliders;track slide.id){
+  
+   
+    <img  class="w-100" *ngIf="slide.id == index"  width="100" height="500px" [src]="slide.img" alt=""> 
+    }
+    
+</div>
+
+<div class=" arrow-cont position-absolute w-100 d-flex justify-content-between align-items-center">
+    <i class="fs-3 uil uil-arrow-circle-left" (click)="sliderPrev()"></i>
+    <i class="uil fs-3 uil-arrow-circle-right" (click)="sliderNext()"></i>
+</div>
+
+</div>

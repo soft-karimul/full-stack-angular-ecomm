@@ -1,0 +1,45 @@
+# Ignore node_modules for both projects
+**/node_modules/
+
+# Ignore build/output directories
+**/dist/
+**/build/
+
+# Ignore environment files (if any)
+.env
+.env.local
+.env.development
+.env.production
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore logs
+*.log
+logs/
+
+# Ignore dependency caches
+.cache/
+.temp/
+
+# Ignore Angular-specific files
+e-comm-front-angular/.angular/
+e-comm-front-angular/.cache/
+e-comm-front-angular/.temp/
+
+# Ignore NestJS-specific files
+e-comm-nestjs/.cache/
+e-comm-nestjs/.temp/
+
+# Ignore package-lock files (optional)
+package-lock.json
+yarn.lock
+
+# Ignore TypeScript build files
+*.js
+*.js.map

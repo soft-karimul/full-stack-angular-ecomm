@@ -1,0 +1,106 @@
+<div class="container rounded-2 py-4 my-4">
+  <h3 class="fs-6 fw-normal">Category</h3>
+  <div class="row g-0 p-0 m-0 my-4">
+    <div class="col-md-4 p-0 m-0 mb-3">
+      <button class="btn border me-2">
+        <i class="uil uil-import me-2"></i>Import
+      </button>
+      <button class="btn border">
+        <i class="uil uil-export me-2"></i><span>Export </span>
+      </button>
+    </div>
+    <div class="col-md-8 d-flex justify-content-end align-items-start p-0 m-0">
+      <button class="btn border d-flex py-2 px-4">
+        <span class="uil uil-edit me-2"></span>
+        <span class="d-md-block d-none">Bulk Action</span>
+      </button>
+
+      <button
+        data-bs-toggle="offcanvas"
+        data-bs-target="#subCategory"
+        aria-controls="offcanvasExample"
+        class="btn border d-flex bg-one py-2 px-4"
+      >
+        <i class="uil uil-plus me-2"></i>
+        <span class="d-md-block d-none">Add sub category</span>
+      </button>
+
+      <button
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasExample"
+        aria-controls="offcanvasExample"
+        class="add d-flex btn border bg-four py-2 px-4"
+      >
+        <i class="uil uil-plus-circle me-2"></i>
+        <span class="d-md-block d-none">Add category</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="container pt-4 p-0 pb-0 rounded-2 my-4">
+ 
+  <div class="row px-4">
+    <div class="col-md-6">
+      <h3 class="fs-6 fw-normal">All categories</h3>
+    </div>
+    <div class="col-md-6 d-flex justify-content-end align-items-center">
+      <a href="#" class="mx-2 d-flex justify-content-between align-items-center">
+      <span class="mx-1">Filter</span>
+      <i class="uil uil-filter"></i>
+      </a>
+
+<input type="text" class="form-control rounded-2 shadow-none filter-input">
+    </div>
+  </div>
+  <hr class="my-2">
+ 
+</div>
+<table class="table p-2 my-4">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col"><i class="uil uil-align-center-v"></i>Name</th>
+      <th scope="col"><i class="uil uil-align-center-v"></i>Featured</th>
+      <th scope="col"><i class="uil uil-align-center-v"></i>Products</th>
+      <th scope="col"><i class="uil uil-align-center-v"></i>Status</th>
+      <th scope="col"><i class="uil uil-align-center-v"></i>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let category of categories;let i=index">
+      <th scope="row">{{i+1}}</th>
+      <td>{{category.category }}</td>
+      <td>
+        @if(category.featured){
+          <i class="uil uil-check-circle"></i>
+        }@else {
+          <i class="uil uil-times-circle"></i>
+        }
+      </td>
+      <td>34 products</td>
+      <td>
+        @if(category.featured){
+          <i class="uil uil-check-circle"></i>
+        }@else{
+          <i class="uil uil-times-circle"></i>
+        }
+      </td>
+      <td> 
+        <button class="btn bg-four border me-2">
+          <i class="uil uil-edit me-2"></i>Edit
+        </button>
+        <button class="btn border">
+          <i class="uil uil-trash me-2"></i><span>Delete </span>
+        </button>
+    </td>
+    </tr>
+  </tbody>
+</table>
+
+<app-add-category ></app-add-category>
+<div *ngIf="categories">
+  <app-sub-category [sendCategory]="categories"></app-sub-category>
+</div>
+
+

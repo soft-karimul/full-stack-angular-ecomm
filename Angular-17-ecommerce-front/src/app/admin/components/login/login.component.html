@@ -1,0 +1,95 @@
+<div
+  class="container d-flex  align-items-center justify-content-center"
+  style="height: 800px"
+>
+  <div class="row shadow-lg rounded py-5">
+    <div class="col-md-6 d-flex justify-content-center align-items-center">
+      <img
+        src="../../../../assets/images/shopping-5200288_1280.webp"
+        class="w-100"
+        alt=""
+      />
+    </div>
+    <div class="col-md-6 rounded p-4">
+      <h2 class="fs-4">Login</h2>
+   
+
+      <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
+
+      <div class="mb-2 row d-flex flex-column">
+        <label for="Email" class="col-sm-12 col-form-label">Email</label>
+        <div class="col-sm-10">
+          <input
+            type="email"
+            class="form-control form-control-lg rounded-1"
+            id="email" formControlName="email"
+            value=""
+          />
+          <div *ngIf="email?.invalid && (email?.dirty || email?.touched)"
+          class="alert text-danger py-1 ms-0 ps-0 ">
+        <div *ngIf="email?.errors?.['required']">
+          Email is required.
+        </div>
+      </div>
+        </div>
+      </div>
+
+      <div class="mb-2 row d-flex flex-column">
+        <label for="fullname" class="col-sm-12 col-form-label">Password</label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control form-control-lg rounded-1 "
+            id="fullname" formControlName="password"
+            value=""
+          />
+          <div *ngIf="password?.invalid && (password?.dirty || password?.touched)"
+          class="alert text-danger py-1 ms-0 ps-0">
+        <div *ngIf="password?.errors?.['required']">
+          Password is required.
+        </div>
+      </div>
+        </div>
+      </div>
+
+  
+
+      <div class="mb-2 row d-flex flex-column">
+      <div class="col-sm-10" style="margin: 20px 0px 50px 0px">
+        <button [disabled]="btn_state" type="submit" class="btn  fs-5 submit btn-lg w-100">
+          Login <span *ngIf="btn_state">...</span>
+        </button>
+      </div>
+      </div>
+      </form>
+
+     
+
+      <div class="row">
+        <div class="col-sm-10 d-flex justify-content-around gap-4" style="margin: 20px 0px 50px 0px">
+          <button
+          type="submit"
+          class="btn rounded-2 border fs-6   social-facebook btn-lg w-100"
+        >
+          Facebook <i class="uit uit-facebook-f"></i>
+        </button>
+        <button
+        type="submit"
+        class="btn fs-6 rounded-1 border social-google btn-lg  w-100"
+      >
+        Google <i class="uit uit-google"></i>
+      </button>
+        </div>
+        </div>
+
+        <div class="row">
+
+        </div>
+      <div class="my-2 col-sm-10 d-flex justify-content-between">
+        <a routerLink="/signup" style="font-size: 14px;" class="d-block mb-2">Create an account ?</a>
+        <a routerLink="/admin/forgot" class="d-block " style="font-size: 14px;">Forgot your password</a>
+      </div>
+    </div>
+  </div>
+  <ng-toast></ng-toast>
+</div>

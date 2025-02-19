@@ -1,0 +1,25 @@
+.container{
+    background-color: var(--color-two);
+}
+span {
+    font-size: 12px;
+}
+
+button {
+    font-size: 12px;
+   
+}
+.filter-input {
+    width: 50%;
+    height: 35px;
+}
+.filter-input:active{
+    outline: none!important;
+}
+
+table th {
+    font-size: 12px;
+}
+table td{
+    font-size: 12px;
+}
